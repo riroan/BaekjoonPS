@@ -1,0 +1,12 @@
+def solution(s):
+    s = s.split('},{')
+    s = [i.replace('{', '').replace('}', '').split(',') for i in s]
+    s.sort(key=lambda x: len(x))
+    ans = []
+    ss = set()
+    for j in s:
+        for i in j:
+            if i not in ss:
+                ss.add(i)
+                ans.append(int(i))
+    return ans
