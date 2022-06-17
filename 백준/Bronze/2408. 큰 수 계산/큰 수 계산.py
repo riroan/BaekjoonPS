@@ -1,0 +1,1 @@
+print(eval(''.join([input()for i in[0]*(2*int(input())-1)]).replace('/','//')))
