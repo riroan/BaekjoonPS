@@ -1,0 +1,55 @@
+from bisect import bisect_left
+
+
+def solution(info, query):
+    answer = []
+    dd = {}
+    x = ['cpp', 'java', 'python']
+    y = ['backend', 'frontend']
+    z = ['junior', 'senior']
+    w = ['chicken', 'pizza']
+    for i in x:
+        dd[i] = {}
+        for j in y:
+            dd[i][j] = {}
+            for k in z:
+                dd[i][j][k] = {}
+                for l in w:
+                    dd[i][j][k][l] = []
+    for i in info:
+        a, b, c, d, e = i.split()
+        e = int(e)
+        dd[a][b][c][d].append(e)
+    for i in x:
+        for j in y:
+            for k in z:
+                for l in w:
+                    dd[i][j][k][l].sort()
+    for q in query:
+        a, b, c, d = q.split(" and ")
+        d, e = d.split()
+        e = int(e)
+        cnt = 0
+        if a == '-':
+            xx = x
+        else:
+            xx = [a]
+        if b == '-':
+            yy = y
+        else:
+            yy = [b]
+        if c == '-':
+            zz = z
+        else:
+            zz = [c]
+        if d == '-':
+            ww = w
+        else:
+            ww = [d]
+        for i in xx:
+            for j in yy:
+                for k in zz:
+                    for l in ww:
+                        cnt+=len(dd[i][j][k][l])-bisect_left(dd[i][j][k][l], e)
+        answer.append(cnt)
+    return answer
