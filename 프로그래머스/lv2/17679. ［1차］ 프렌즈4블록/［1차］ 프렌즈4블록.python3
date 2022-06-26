@@ -1,0 +1,30 @@
+def solution(m, n, board):
+    answer = 0
+    board = [list(i) for i in board]
+    while True:
+        ok = False
+        arr = [[0]*n for i in range(m)]
+        for i in range(m-1):
+            for j in range(n-1):
+                if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1] and board[i][j] != ' ':
+                    ok = True
+                    arr[i][j] = arr[i+1][j] = arr[i][j+1] = arr[i+1][j+1] = 1
+        if not ok:
+            break
+        for i in range(m):
+            for j in range(n):
+                if arr[i][j]:
+                    board[i][j] = ' '
+        new_board = [[' ']*n for i in range(m)]
+        for i in range(n):
+            ix = m-1
+            for j in range(m-1, -1, -1):
+                if board[j][i] != ' ':
+                    new_board[ix][i] = board[j][i]
+                    ix -= 1
+        board = new_board
+    for i in range(m):
+        for j in range(n):
+            if board[i][j] == ' ':
+                answer += 1
+    return answer
