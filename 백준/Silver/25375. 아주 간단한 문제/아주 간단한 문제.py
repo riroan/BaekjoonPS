@@ -1,0 +1,1 @@
+for _ in'0'*int(input()):a,b=map(int,input().split());print(+(not b%a and(b/a)!=1))
