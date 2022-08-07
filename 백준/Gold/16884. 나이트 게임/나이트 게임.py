@@ -1,0 +1,1 @@
+for _ in '0'*int(input()):print(["cubelover","koosaga"][int(input())%2])
