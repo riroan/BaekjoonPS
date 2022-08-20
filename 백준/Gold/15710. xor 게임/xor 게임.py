@@ -1,0 +1,1 @@
+print(pow(2**31,[*map(int,input().split())][2]-1,10**9+7))
