@@ -1,0 +1,1 @@
+print(5000-sum([[500,800,1000][i-1]for i in map(int,input().split())]))
